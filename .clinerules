@@ -1,0 +1,12 @@
+# Project Context
+This is a personal "TIL Cookbook" repository for `hammer1900`. It contains practical, real-world programming solutions, CLI tools, and scripts.
+
+# Core Philosophy & Quality Standards
+1. **Polished Tools, Not a Dump:** This is NOT a dump repo for half-baked scripts. Every script must be a finished, user-friendly tool with proper error handling, input validation, and good UX (e.g., navigable menus, graceful exits).
+2. **Simple, One-Way Packaging:** While the code is highly polished, the repo structure remains simple and one-directional. No Issues, no Discussions, no PR templates, no CI/CD. 
+3. **Strict Formatting:** Every new solution must have a markdown file in `/entries` strictly following `TEMPLATE.md`. 
+4. **File Structure:** Standalone scripts go in `/scripts/<entry-name>/`. The entry markdown file should link to the script.
+5. **Index Updates:** When a new entry is finished, automatically update the Index table in `README.md`.
+
+# Workflow
+When documenting a new solution, ensure the code is robust and user-friendly. Format the markdown using the template, save the script, and update the README. Ask clarifying questions if real-world implementation details are missing.

@@ -1,0 +1,31 @@
+# Hide my personal template from the public
+TEMPLATE.md
+
+# Downloaded media & temp files
+*.mp4
+*.mkv
+*.webm
+*.avi
+*.mov
+*.mp3
+*.m4a
+*.wav
+*.part
+*.ytdl
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor directories
+.vscode/
+.idea/
+
