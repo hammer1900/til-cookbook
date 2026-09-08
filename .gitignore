@@ -1,6 +1,11 @@
 # Hide my personal template from the public
 TEMPLATE.md
 
+# Personal notes & documentation scratchpads
+dongle.md
+*.local.md
+notes/
+
 # Downloaded media & temp files
 *.mp4
 *.mkv
@@ -28,4 +33,5 @@ Thumbs.db
 # IDE and Editor directories
 .vscode/
 .idea/
+
 
