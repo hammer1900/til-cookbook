@@ -1,0 +1,14 @@
+[Unit]
+Description=wayvibes keyboard sound (EG Oreo)
+After=graphical-session.target pipewire-pulse.service
+Wants=pipewire-pulse.service
+PartOf=graphical-session.target
+
+[Service]
+Environment=PULSE_SINK=__PULSE_SINK__
+ExecStart=__WAYVIBES_BIN__ __SOUNDPACK__ -v __VOLUME__
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

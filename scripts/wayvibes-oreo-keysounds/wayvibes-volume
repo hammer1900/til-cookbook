@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Adjust Wayvibes keysound volume independently of the system mixer.
+# Usage: wayvibes-volume up|down|mute|set <0-150>|status
+set -euo pipefail
+
+step="${WAYVIBES_VOLUME_STEP:-5}"
+
+find_id() {
+  wpctl status 2>/dev/null | sed -n '/Streams:/,/Video/p' \
+    | awk '/wayvibes/{gsub(/[^0-9]/,"",$1); print $1; exit}'
+}
+
+id="$(find_id)"
+if [ -z "${id:-}" ]; then
+  echo "wayvibes: no active audio stream found (is the service running?)" >&2
+  exit 1
+fi
+
+case "${1:-}" in
+  up)   wpctl set-volume "$id" "${step}%+" ;;
+  down) wpctl set-volume "$id" "${step}%-" ;;
+  mute) wpctl set-mute "$id" toggle ;;
+  set)
+    val="${2:-}"
+    case "$val" in
+      ''|*[!0-9]*) echo "usage: wayvibes-volume set <0-150>" >&2; exit 1 ;;
+    esac
+    if [ "$val" -gt 150 ]; then
+      echo "usage: wayvibes-volume set <0-150>" >&2
+      exit 1
+    fi
+    wpctl set-volume "$id" "${val}%"
+    ;;
+  status) wpctl get-volume "$id" ;;
+  *)
+    echo "usage: wayvibes-volume up|down|mute|set <0-150>|status" >&2
+    exit 1
+    ;;
+esac
